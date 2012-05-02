@@ -1,4 +1,4 @@
-os-custom-input-component
+ios-custom-input-component
 =========================
 
 An example of a custom iOS text-input component
