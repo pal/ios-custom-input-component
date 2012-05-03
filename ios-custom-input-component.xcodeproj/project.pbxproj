@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234D1CD115521B330026E0A5 /* btn-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 234D1CCF15521B330026E0A5 /* btn-down.png */; };
+		234D1CD215521B330026E0A5 /* btn-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 234D1CD015521B330026E0A5 /* btn-up.png */; };
 		2373C9871551B73C00F211AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9861551B73C00F211AA /* UIKit.framework */; };
 		2373C9891551B73C00F211AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9881551B73C00F211AA /* Foundation.framework */; };
 		2373C98B1551B73C00F211AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C98A1551B73C00F211AA /* CoreGraphics.framework */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		234D1CCF15521B330026E0A5 /* btn-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-down.png"; sourceTree = "<group>"; };
+		234D1CD015521B330026E0A5 /* btn-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-up.png"; sourceTree = "<group>"; };
 		2373C9821551B73C00F211AA /* ios-custom-input-component.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-custom-input-component.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2373C9861551B73C00F211AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2373C9881551B73C00F211AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +119,8 @@
 		2373C98C1551B73C00F211AA /* ios-custom-input-component */ = {
 			isa = PBXGroup;
 			children = (
+				234D1CCF15521B330026E0A5 /* btn-down.png */,
+				234D1CD015521B330026E0A5 /* btn-up.png */,
 				2373C9951551B73D00F211AA /* SAAppDelegate.h */,
 				2373C9961551B73D00F211AA /* SAAppDelegate.m */,
 				2373C9981551B73D00F211AA /* SAViewController.h */,
@@ -232,6 +238,8 @@
 			files = (
 				2373C9911551B73D00F211AA /* InfoPlist.strings in Resources */,
 				2373C99D1551B73D00F211AA /* SAViewController.xib in Resources */,
+				234D1CD115521B330026E0A5 /* btn-down.png in Resources */,
+				234D1CD215521B330026E0A5 /* btn-up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +449,7 @@
 				2373C9B71551B73D00F211AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2373C9B81551B73D00F211AA /* Build configuration list for PBXNativeTarget "ios-custom-input-componentTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +458,7 @@
 				2373C9BA1551B73D00F211AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

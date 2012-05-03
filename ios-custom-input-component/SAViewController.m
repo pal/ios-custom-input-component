@@ -3,7 +3,7 @@
 //  ios-custom-input-component
 //
 //  Created by Pål Brattberg on 5/2/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Acando. All rights reserved.
 //
 
 #import "SAViewController.h"
@@ -19,8 +19,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
   
+  
+  // Handle background clicks
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
   
   [nc addObserver:self selector:@selector(keyboardWillShow:) name:
@@ -29,11 +30,7 @@
   [nc addObserver:self selector:@selector(keyboardWillHide:) name:
    UIKeyboardWillHideNotification object:nil];
   
-  tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                          action:@selector(didTapAnywhere:)];
-  
-  
-  
+  tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 }
 
 -(void) keyboardWillShow:(NSNotification *) note {

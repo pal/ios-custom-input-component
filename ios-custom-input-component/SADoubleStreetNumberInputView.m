@@ -10,17 +10,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 @implementation SADoubleStreetNumberInputView
 
 @synthesize streetNumber = _streetNumber;
-//@synthesize viewController;
+@synthesize numberTextField, letterTextField;
+
 
 - (void)baseInit {
   _streetNumber = nil;
-  self.backgroundColor = [UIColor blackColor];
-  //  self.viewController
-  
+  numberTextField = nil;
+  letterTextField = nil;
+  self.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -55,16 +57,78 @@
   return textField;
 }
 
+
+-(UIButton *)createArrowButtonWithFrame:(CGRect)frame image:(NSString *)imgPath {
+  UIImage *image = [UIImage imageNamed:imgPath];
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  button.tag = 1;
+  button.frame = frame;
+  [button setBackgroundImage:image forState:UIControlStateNormal];
+  return button;
+}
+
 - (void)layoutSubviews {
   
   [super layoutSubviews];
   
+  UIButton *upButton1 = [self createArrowButtonWithFrame:CGRectMake(30, 2, 37, 30) image:@"btn-up.png"];
+  [upButton1 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  [self addSubview:upButton1];
+
+  UIButton *upButton2 = [self createArrowButtonWithFrame:CGRectMake(170, 2, 37, 30) image:@"btn-up.png"];
+  [upButton2 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  upButton2.tag = 2;
+  [self addSubview:upButton2];
+
+  UIButton *downButton = [self createArrowButtonWithFrame:CGRectMake(30, 182, 37, 30) image:@"btn-down.png"];
+  [downButton addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  [self addSubview:downButton];
+
+  UIButton *downButton2 = [self createArrowButtonWithFrame:CGRectMake(170, 182, 37, 30) image:@"btn-down.png"];
+  [downButton2 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  downButton2.tag = 2;
+  [self addSubview:downButton2];
+
   // view is 320x460
-  UITextField *textField = [self createTextFieldWithFrame:CGRectMake(10, 10, 140, 100)];
-  [self addSubview:textField];
+  numberTextField = [self createTextFieldWithFrame:CGRectMake(10, 80, 140, 100)];
+  [self addSubview:numberTextField];
   
-  UITextField *textField2 = [self createTextFieldWithFrame:CGRectMake(150, 10, 140, 100)];
-  [self addSubview:textField2];
+  letterTextField = [self createTextFieldWithFrame:CGRectMake(150, 80, 140, 100)];
+  [self addSubview:letterTextField];
+}
+
+-(void)increaseValueInTextField:(id)sender {
+  // TODO Add sanity checks
+  UITextField *textField = ((UIButton*)sender).tag == 1?numberTextField:letterTextField;
+  
+  NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+  [f setNumberStyle:NSNumberFormatterDecimalStyle];
+  NSNumber *myNumber = [f numberFromString:textField.text];
+  
+  if (myNumber != nil) {
+    textField.text = [NSString stringWithFormat:@"%@", [myNumber intValue] + 1];
+  } else {
+    unichar c = [textField.text characterAtIndex:0];
+    c++;
+    textField.text = [NSString stringWithCharacters:&c length:1];
+  }
+}
+
+-(void)decreaseValueInTextField:(id)sender {
+  // TODO Add sanity checks
+  UITextField *textField = ((UIButton*)sender).tag == 1?numberTextField:letterTextField;
+  
+  NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+  [f setNumberStyle:NSNumberFormatterDecimalStyle];
+  NSNumber *myNumber = [f numberFromString:textField.text];
+  
+  if (myNumber != nil) {
+    textField.text = [NSString stringWithFormat:@"%@", [myNumber intValue] - 1];
+  } else {
+    unichar c = [textField.text characterAtIndex:0];
+    c--;
+    textField.text = [NSString stringWithCharacters:&c length:1];
+  }
 }
 
 /*
@@ -84,6 +148,10 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
   [textField resignFirstResponder];
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+  return TRUE;
 }
 
 // Always use upper case chars
