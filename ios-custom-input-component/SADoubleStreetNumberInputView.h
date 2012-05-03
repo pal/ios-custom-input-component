@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SAStreetNumberInput.h"
 
-@interface SADoubleStreetNumberInputView : UIView <SAStreetNumberInput>
+@interface SADoubleStreetNumberInputView : UIView <SAStreetNumberInput, UITextFieldDelegate>
 
-@property (nonatomic, retain) IBOutlet UIViewController<UITextFieldDelegate> *viewController;
+//@property (nonatomic, retain) IBOutlet UIViewController *viewController;
+//@property (nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
 
 - (UITextField*)createTextFieldWithFrame:(CGRect)frame;
+
 
 @end
 

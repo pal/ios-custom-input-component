@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SAViewController : UIViewController
-
+  @property (nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
 @end

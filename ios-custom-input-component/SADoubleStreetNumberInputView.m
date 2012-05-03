@@ -14,15 +14,16 @@
 @implementation SADoubleStreetNumberInputView
 
 @synthesize streetNumber = _streetNumber;
-@synthesize viewController;
+//@synthesize viewController;
 
 - (void)baseInit {
   _streetNumber = nil;
   self.backgroundColor = [UIColor blackColor];
+  //  self.viewController
+  
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
     [self baseInit];
@@ -40,15 +41,17 @@
 
 -(UITextField *)createTextFieldWithFrame:(CGRect)frame {
   UITextField *textField = [[UITextField alloc] initWithFrame:frame];
-  textField.borderStyle = UITextBorderStyleNone;
+  textField.borderStyle = UITextBorderStyleLine;  // TODO Change to None
   textField.font = [UIFont boldSystemFontOfSize:62];
   textField.textColor = [UIColor whiteColor];
-  textField.placeholder = @"789";
+  textField.textAlignment = UITextAlignmentCenter;
   textField.autocorrectionType = UITextAutocorrectionTypeNo;
+  textField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
   textField.keyboardType = UIKeyboardTypeDefault;
   textField.returnKeyType = UIReturnKeyDone;
   textField.clearButtonMode = UITextFieldViewModeNever;
-  textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
+  textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+  textField.delegate = self;
   return textField;
 }
 
@@ -58,16 +61,9 @@
   
   // view is 320x460
   UITextField *textField = [self createTextFieldWithFrame:CGRectMake(10, 10, 140, 100)];
-  textField.delegate = viewController;
   [self addSubview:textField];
   
   UITextField *textField2 = [self createTextFieldWithFrame:CGRectMake(150, 10, 140, 100)];
-
-  //  UITextField *textField2 = [[UITextField alloc] initWithFrame:CGRectMake(150, 10, 140, 100)];
-  textField2.keyboardType = UIKeyboardTypeDefault;
-  textField2.placeholder = @"ABC";
-  textField2.returnKeyType = UIReturnKeyDone;
-  textField2.delegate = viewController;
   [self addSubview:textField2];
 }
 
@@ -79,5 +75,21 @@
     // Drawing code
 }
 */
+
+// UITextFieldDelegate methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+  [textField resignFirstResponder];
+}
+
+// Always use upper case chars
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  textField.text = [textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]]; 
+  return NO;
+}
 
 @end
