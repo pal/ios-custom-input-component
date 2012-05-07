@@ -2,7 +2,6 @@
 //  SAViewController.m
 //  ios-custom-input-component
 //
-//  Created by Pål Brattberg on 5/2/12.
 //  Copyright (c) 2012 Acando. All rights reserved.
 //
 
@@ -17,48 +16,44 @@
 @synthesize tapRecognizer;
 @synthesize input;
 
--(void)showCurrentValue:(id)sender {
-  NSLog(@"Address: %@",[[self input] getAddress]);
+- (void) showCurrentValue:(id)sender {
+  NSLog(@"Address: %@", [[self input] getAddress]);
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-  
-  
+- (void) viewDidLoad {
+  [super viewDidLoad];
+
+
   // Handle background clicks
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-  
+
   [nc addObserver:self selector:@selector(keyboardWillShow:) name:
    UIKeyboardWillShowNotification object:nil];
-  
+
   [nc addObserver:self selector:@selector(keyboardWillHide:) name:
    UIKeyboardWillHideNotification object:nil];
-  
+
   tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 }
 
--(void) keyboardWillShow:(NSNotification *) note {
+- (void) keyboardWillShow:(NSNotification *)note {
   [self.view addGestureRecognizer:tapRecognizer];
 }
 
--(void) keyboardWillHide:(NSNotification *) note
-{
+- (void) keyboardWillHide:(NSNotification *)note {
   [self.view removeGestureRecognizer:tapRecognizer];
 }
 
--(void)didTapAnywhere: (UITapGestureRecognizer*) recognizer {    
+- (void) didTapAnywhere:(UITapGestureRecognizer *)recognizer {
   [self.view endEditing:TRUE];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+- (void) viewDidUnload {
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 

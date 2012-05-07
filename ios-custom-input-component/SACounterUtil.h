@@ -3,7 +3,6 @@
 //  Helper class to increment/decrement string and number values.
 //  Used for allowing button-based modification of street number values.
 //
-//  Created by Pål Brattberg on 5/7/12.
 //  Copyright (c) 2012 Acando. All rights reserved.
 //
 
@@ -12,17 +11,17 @@
 @interface SACounterUtil : NSObject
 
 #define DEFAULT_NUMERIC_VALUE @"1"
-#define MIN_NUMERIC_VALUE 1
-#define MAX_NUMERIC_VALUE 999
+#define MIN_NUMERIC_VALUE     1
+#define MAX_NUMERIC_VALUE     999
 
-#define DEFAULT_STRING_VALUE @"A"
-#define MIN_CHAR_VALUE 'A'
-#define MAX_CHAR_VALUE 'Z'
+#define DEFAULT_STRING_VALUE  @"A"
+#define MIN_CHAR_VALUE        'A'
+#define MAX_CHAR_VALUE        'Z'
 
-+(NSString*)nextNumber:(NSString*)in_val;
-+(NSString*)prevNumber:(NSString*)in_val;
++ (NSString *) nextNumber:(NSString *)in_val;
++ (NSString *) prevNumber:(NSString *)in_val;
 
-+(NSString*)nextString:(NSString*)in_val;
-+(NSString*)prevString:(NSString*)in_val;
++ (NSString *) nextString:(NSString *)in_val;
++ (NSString *) prevString:(NSString *)in_val;
 
 @end
