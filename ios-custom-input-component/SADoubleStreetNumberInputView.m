@@ -12,8 +12,24 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-#define STRING_FIELD_TAG 1
-#define NUMBER_FIELD_TAG 2
+#define STRING_FIELD_TAG  1
+#define NUMBER_FIELD_TAG  2
+#define FONT_SIZE         60
+#define BG_COLOR          [UIColor blackColor]
+
+// Define positions for drawing on screen
+#define SCREEN_WIDTH      [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT     [[UIScreen mainScreen] bounds].size.height
+#define BUTTON_WIDTH      37
+#define BUTTON_HEIGHT     30
+
+#define LEFT_BUTTON_X     ((SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2))
+#define RIGHT_BUTTON_X    (LEFT_BUTTON_X + (SCREEN_WIDTH / 2))
+#define TEXT_FIELD_HEIGHT FONT_SIZE
+
+#define BUTTON_SPACE      5
+#define TOP_BTN_Y         0
+#define BOTTOM_BTN_Y      (TEXT_FIELD_HEIGHT + BUTTON_HEIGHT + BUTTON_SPACE * 2)
 
 
 // Private methods
@@ -31,11 +47,11 @@
 - (void) baseInit {
   numberTextField = nil;
   letterTextField = nil;
-  self.backgroundColor = [UIColor lightGrayColor];
+  self.backgroundColor = BG_COLOR;
 }
 
 - (id) initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
+  self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, BOTTOM_BTN_Y + BUTTON_HEIGHT)];
   if (self) {
     [self baseInit];
   }
@@ -45,6 +61,7 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
   if ((self = [super initWithCoder:aDecoder])) {
     [self baseInit];
+    self.frame = (CGRectMake(super.frame.origin.x, super.frame.origin.y, SCREEN_WIDTH, BOTTOM_BTN_Y + BUTTON_HEIGHT));
   }
   return self;
 }
@@ -52,8 +69,8 @@
 - (UITextField *) createTextFieldWithFrame:(CGRect)frame {
   UITextField *textField = [[UITextField alloc] initWithFrame:frame];
 
-  textField.borderStyle = UITextBorderStyleLine;  // TODO Change to None
-  textField.font = [UIFont boldSystemFontOfSize:62];
+  textField.borderStyle = UITextBorderStyleNone;
+  textField.font = [UIFont boldSystemFontOfSize:FONT_SIZE];
   textField.textColor = [UIColor whiteColor];
   textField.textAlignment = UITextAlignmentCenter;
   textField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -82,29 +99,30 @@
 
   [super layoutSubviews];
 
-  UIButton *upButton1 = [self createArrowButtonWithFrame:CGRectMake(30, 2, 37, 30) image:@"btn-up.png"];
+
+  UIButton *upButton1 = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
   [upButton1 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:upButton1];
 
-  UIButton *upButton2 = [self createArrowButtonWithFrame:CGRectMake(170, 2, 37, 30) image:@"btn-up.png"];
+  UIButton *upButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
   [upButton2 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   upButton2.tag = STRING_FIELD_TAG;
   [self addSubview:upButton2];
 
-  UIButton *downButton = [self createArrowButtonWithFrame:CGRectMake(30, 182, 37, 30) image:@"btn-down.png"];
+  UIButton *downButton = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
   [downButton addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:downButton];
 
-  UIButton *downButton2 = [self createArrowButtonWithFrame:CGRectMake(170, 182, 37, 30) image:@"btn-down.png"];
+  UIButton *downButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
   [downButton2 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
 
   // view is 320x460
-  numberTextField = [self createTextFieldWithFrame:CGRectMake(10, 80, 140, 100)];
+  numberTextField = [self createTextFieldWithFrame:CGRectMake(0, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   [self addSubview:numberTextField];
 
-  letterTextField = [self createTextFieldWithFrame:CGRectMake(150, 80, 140, 100)];
+  letterTextField = [self createTextFieldWithFrame:CGRectMake(SCREEN_WIDTH / 2, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   [self addSubview:letterTextField];
 } // layoutSubviews
 

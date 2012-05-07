@@ -45,8 +45,7 @@
   if ((in_val == nil) || (in_val.length < 1)) {
     return DEFAULT_STRING_VALUE;
   }
-  unichar in_char = [in_val characterAtIndex:0];
-  int ret_val = ++in_char;
+  unichar ret_val = [in_val characterAtIndex:0] + 1;
   if (ret_val > MAX_CHAR_VALUE) {
     ret_val = MIN_CHAR_VALUE;
   }
@@ -57,8 +56,7 @@
   if ((in_val == nil) || (in_val.length < 1)) {
     return DEFAULT_STRING_VALUE;
   }
-  unichar in_char = [in_val characterAtIndex:0];
-  int ret_val = --in_char;
+  unichar ret_val = [in_val characterAtIndex:0] - 1;
   if (ret_val < MIN_CHAR_VALUE) {
     ret_val = MAX_CHAR_VALUE;
   }
