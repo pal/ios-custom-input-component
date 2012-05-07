@@ -106,16 +106,26 @@
   NSNumber *myNumber = [f numberFromString:textField.text];
   
   if (myNumber != nil) {
-    textField.text = [NSString stringWithFormat:@"%@", [myNumber intValue] + 1];
+    if ([myNumber intValue] < 999) {
+      int new_val = [myNumber intValue] + 1;
+      textField.text = [NSString stringWithFormat:@"%d", new_val];
+    } else 
+      textField.text = @"1";
+  } else if (textField == numberTextField) {
+    textField.text = @"1";
   } else {
     unichar c = [textField.text characterAtIndex:0];
-    c++;
-    textField.text = [NSString stringWithCharacters:&c length:1];
+    if (c >= 'A' && c < 'Z') {
+      c++;
+      textField.text = [NSString stringWithCharacters:&c length:1];
+    } else {
+      textField.text = @"A";
+    }
   }
 }
 
 -(void)decreaseValueInTextField:(id)sender {
-  // TODO Add sanity checks
+  // TODO Add sanity checks 
   UITextField *textField = ((UIButton*)sender).tag == 1?numberTextField:letterTextField;
   
   NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -123,11 +133,20 @@
   NSNumber *myNumber = [f numberFromString:textField.text];
   
   if (myNumber != nil) {
-    textField.text = [NSString stringWithFormat:@"%@", [myNumber intValue] - 1];
+    if ([myNumber intValue] > 1)
+      textField.text = [NSString stringWithFormat:@"%d", [myNumber intValue] - 1];
+    else 
+      textField.text = @"1";
+  } else if (textField == numberTextField) {
+    textField.text = @"1";
   } else {
     unichar c = [textField.text characterAtIndex:0];
-    c--;
-    textField.text = [NSString stringWithCharacters:&c length:1];
+    if (c > 'A' && c <= 'Z') {
+      c--;
+      textField.text = [NSString stringWithCharacters:&c length:1];
+    } else {
+      textField.text = @"Z";
+    }
   }
 }
 
