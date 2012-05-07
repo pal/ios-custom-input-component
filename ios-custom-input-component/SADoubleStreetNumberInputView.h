@@ -11,12 +11,8 @@
 
 @interface SADoubleStreetNumberInputView : UIView <SAStreetNumberInput, UITextFieldDelegate>
 
-- (UITextField*)createTextFieldWithFrame:(CGRect)frame;
-- (UIButton*)createArrowButtonWithFrame:(CGRect)frame image:(NSString*)imgPath;
-
 @property (nonatomic,retain) UITextField * numberTextField;
 @property (nonatomic,retain) UITextField * letterTextField;
-
 
 - (IBAction)increaseValueInTextField:(id)sender;
 - (IBAction)decreaseValueInTextField:(id)sender;

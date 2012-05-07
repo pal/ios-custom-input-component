@@ -7,19 +7,29 @@
 //
 
 #import "SADoubleStreetNumberInputView.h"
+#import "SACounterUtil.h"
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
+#define STRING_FIELD_TAG 1
+#define NUMBER_FIELD_TAG 2
+
+
+// Private methods
+@interface SADoubleStreetNumberInputView ()
+- (UITextField*)createTextFieldWithFrame:(CGRect)frame;
+- (UIButton*)createArrowButtonWithFrame:(CGRect)frame image:(NSString*)imgPath;
+@end
+
+
 @implementation SADoubleStreetNumberInputView
 
-@synthesize streetNumber = _streetNumber;
 @synthesize numberTextField, letterTextField;
 
 
 - (void)baseInit {
-  _streetNumber = nil;
   numberTextField = nil;
   letterTextField = nil;
   self.backgroundColor = [UIColor lightGrayColor];
@@ -40,7 +50,6 @@
   return self;
 }
 
-
 -(UITextField *)createTextFieldWithFrame:(CGRect)frame {
   UITextField *textField = [[UITextField alloc] initWithFrame:frame];
   textField.borderStyle = UITextBorderStyleLine;  // TODO Change to None
@@ -54,6 +63,7 @@
   textField.clearButtonMode = UITextFieldViewModeNever;
   textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   textField.delegate = self;
+  textField.text = @"";
   return textField;
 }
 
@@ -61,7 +71,7 @@
 -(UIButton *)createArrowButtonWithFrame:(CGRect)frame image:(NSString *)imgPath {
   UIImage *image = [UIImage imageNamed:imgPath];
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-  button.tag = 1;
+  button.tag = NUMBER_FIELD_TAG;
   button.frame = frame;
   [button setBackgroundImage:image forState:UIControlStateNormal];
   return button;
@@ -77,7 +87,7 @@
 
   UIButton *upButton2 = [self createArrowButtonWithFrame:CGRectMake(170, 2, 37, 30) image:@"btn-up.png"];
   [upButton2 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
-  upButton2.tag = 2;
+  upButton2.tag = STRING_FIELD_TAG;
   [self addSubview:upButton2];
 
   UIButton *downButton = [self createArrowButtonWithFrame:CGRectMake(30, 182, 37, 30) image:@"btn-down.png"];
@@ -86,7 +96,7 @@
 
   UIButton *downButton2 = [self createArrowButtonWithFrame:CGRectMake(170, 182, 37, 30) image:@"btn-down.png"];
   [downButton2 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
-  downButton2.tag = 2;
+  downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
 
   // view is 320x460
@@ -98,57 +108,29 @@
 }
 
 -(void)increaseValueInTextField:(id)sender {
-  // TODO Add sanity checks
-  UITextField *textField = ((UIButton*)sender).tag == 1?numberTextField:letterTextField;
+  UITextField *textField = ((UIButton*)sender).tag == NUMBER_FIELD_TAG ? numberTextField : letterTextField;
   
-  NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-  [f setNumberStyle:NSNumberFormatterDecimalStyle];
-  NSNumber *myNumber = [f numberFromString:textField.text];
-  
-  if (myNumber != nil) {
-    if ([myNumber intValue] < 999) {
-      int new_val = [myNumber intValue] + 1;
-      textField.text = [NSString stringWithFormat:@"%d", new_val];
-    } else 
-      textField.text = @"1";
-  } else if (textField == numberTextField) {
-    textField.text = @"1";
+  if (textField == numberTextField) {
+    textField.text = [SACounterUtil nextNumber:numberTextField.text];
   } else {
-    unichar c = [textField.text characterAtIndex:0];
-    if (c >= 'A' && c < 'Z') {
-      c++;
-      textField.text = [NSString stringWithCharacters:&c length:1];
-    } else {
-      textField.text = @"A";
-    }
+    textField.text = [SACounterUtil nextString:letterTextField.text];
   }
 }
 
 -(void)decreaseValueInTextField:(id)sender {
-  // TODO Add sanity checks 
-  UITextField *textField = ((UIButton*)sender).tag == 1?numberTextField:letterTextField;
+  UITextField *textField = ((UIButton*)sender).tag == NUMBER_FIELD_TAG ? numberTextField : letterTextField;
   
-  NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-  [f setNumberStyle:NSNumberFormatterDecimalStyle];
-  NSNumber *myNumber = [f numberFromString:textField.text];
-  
-  if (myNumber != nil) {
-    if ([myNumber intValue] > 1)
-      textField.text = [NSString stringWithFormat:@"%d", [myNumber intValue] - 1];
-    else 
-      textField.text = @"1";
-  } else if (textField == numberTextField) {
-    textField.text = @"1";
+  if (textField == numberTextField) {
+    textField.text = [SACounterUtil prevNumber:numberTextField.text];
   } else {
-    unichar c = [textField.text characterAtIndex:0];
-    if (c > 'A' && c <= 'Z') {
-      c--;
-      textField.text = [NSString stringWithCharacters:&c length:1];
-    } else {
-      textField.text = @"Z";
-    }
+    textField.text = [SACounterUtil prevString:letterTextField.text];
   }
 }
+
+-(NSString *)getAddress {
+  return [NSString stringWithFormat:@"%@%@", numberTextField.text, letterTextField.text];
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

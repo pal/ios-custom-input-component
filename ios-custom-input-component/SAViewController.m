@@ -15,6 +15,11 @@
 @implementation SAViewController
 
 @synthesize tapRecognizer;
+@synthesize input;
+
+-(void)showCurrentValue:(id)sender {
+  NSLog(@"Address: %@",[[self input] getAddress]);
+}
 
 - (void)viewDidLoad
 {

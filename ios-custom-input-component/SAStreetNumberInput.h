@@ -10,6 +10,6 @@
 
 @protocol SAStreetNumberInput <NSObject>
 
-  @property (nonatomic) NSString *streetNumber;
+- (NSString*) getAddress;
 
 @end

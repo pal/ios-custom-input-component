@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		234D1CD115521B330026E0A5 /* btn-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 234D1CCF15521B330026E0A5 /* btn-down.png */; };
 		234D1CD215521B330026E0A5 /* btn-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 234D1CD015521B330026E0A5 /* btn-up.png */; };
+		2367CF5815580AAC00734255 /* SACounterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2367CF5715580AAC00734255 /* SACounterUtil.m */; };
 		2373C9871551B73C00F211AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9861551B73C00F211AA /* UIKit.framework */; };
 		2373C9891551B73C00F211AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9881551B73C00F211AA /* Foundation.framework */; };
 		2373C98B1551B73C00F211AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C98A1551B73C00F211AA /* CoreGraphics.framework */; };
@@ -20,8 +21,6 @@
 		2373C9A51551B73D00F211AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9A41551B73D00F211AA /* SenTestingKit.framework */; };
 		2373C9A61551B73D00F211AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9861551B73C00F211AA /* UIKit.framework */; };
 		2373C9A71551B73D00F211AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2373C9881551B73C00F211AA /* Foundation.framework */; };
-		2373C9AF1551B73D00F211AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2373C9AD1551B73D00F211AA /* InfoPlist.strings */; };
-		2373C9B21551B73D00F211AA /* ios_custom_input_componentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2373C9B11551B73D00F211AA /* ios_custom_input_componentTests.m */; };
 		2373C9CD1551C39100F211AA /* SADoubleStreetNumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2373C9CC1551C39100F211AA /* SADoubleStreetNumberInputView.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +37,8 @@
 /* Begin PBXFileReference section */
 		234D1CCF15521B330026E0A5 /* btn-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-down.png"; sourceTree = "<group>"; };
 		234D1CD015521B330026E0A5 /* btn-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-up.png"; sourceTree = "<group>"; };
+		2367CF5615580AAC00734255 /* SACounterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SACounterUtil.h; sourceTree = "<group>"; };
+		2367CF5715580AAC00734255 /* SACounterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SACounterUtil.m; sourceTree = "<group>"; };
 		2373C9821551B73C00F211AA /* ios-custom-input-component.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-custom-input-component.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2373C9861551B73C00F211AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2373C9881551B73C00F211AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,10 +54,6 @@
 		2373C99C1551B73D00F211AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SAViewController.xib; sourceTree = "<group>"; };
 		2373C9A31551B73D00F211AA /* ios-custom-input-componentTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-custom-input-componentTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2373C9A41551B73D00F211AA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		2373C9AC1551B73D00F211AA /* ios-custom-input-componentTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios-custom-input-componentTests-Info.plist"; sourceTree = "<group>"; };
-		2373C9AE1551B73D00F211AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2373C9B01551B73D00F211AA /* ios_custom_input_componentTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_custom_input_componentTests.h; sourceTree = "<group>"; };
-		2373C9B11551B73D00F211AA /* ios_custom_input_componentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_custom_input_componentTests.m; sourceTree = "<group>"; };
 		2373C9CA1551C1D000F211AA /* SAStreetNumberInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAStreetNumberInput.h; sourceTree = "<group>"; };
 		2373C9CB1551C39100F211AA /* SADoubleStreetNumberInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SADoubleStreetNumberInputView.h; sourceTree = "<group>"; };
 		2373C9CC1551C39100F211AA /* SADoubleStreetNumberInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SADoubleStreetNumberInputView.m; sourceTree = "<group>"; };
@@ -90,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				2373C98C1551B73C00F211AA /* ios-custom-input-component */,
-				2373C9AA1551B73D00F211AA /* ios-custom-input-componentTests */,
 				2373C9851551B73C00F211AA /* Frameworks */,
 				2373C9831551B73C00F211AA /* Products */,
 			);
@@ -130,6 +126,8 @@
 				2373C9CA1551C1D000F211AA /* SAStreetNumberInput.h */,
 				2373C9CB1551C39100F211AA /* SADoubleStreetNumberInputView.h */,
 				2373C9CC1551C39100F211AA /* SADoubleStreetNumberInputView.m */,
+				2367CF5615580AAC00734255 /* SACounterUtil.h */,
+				2367CF5715580AAC00734255 /* SACounterUtil.m */,
 			);
 			path = "ios-custom-input-component";
 			sourceTree = "<group>";
@@ -141,25 +139,6 @@
 				2373C98F1551B73D00F211AA /* InfoPlist.strings */,
 				2373C9921551B73D00F211AA /* main.m */,
 				2373C9941551B73D00F211AA /* ios-custom-input-component-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2373C9AA1551B73D00F211AA /* ios-custom-input-componentTests */ = {
-			isa = PBXGroup;
-			children = (
-				2373C9B01551B73D00F211AA /* ios_custom_input_componentTests.h */,
-				2373C9B11551B73D00F211AA /* ios_custom_input_componentTests.m */,
-				2373C9AB1551B73D00F211AA /* Supporting Files */,
-			);
-			path = "ios-custom-input-componentTests";
-			sourceTree = "<group>";
-		};
-		2373C9AB1551B73D00F211AA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2373C9AC1551B73D00F211AA /* ios-custom-input-componentTests-Info.plist */,
-				2373C9AD1551B73D00F211AA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,7 +226,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2373C9AF1551B73D00F211AA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +256,7 @@
 				2373C9971551B73D00F211AA /* SAAppDelegate.m in Sources */,
 				2373C99A1551B73D00F211AA /* SAViewController.m in Sources */,
 				2373C9CD1551C39100F211AA /* SADoubleStreetNumberInputView.m in Sources */,
+				2367CF5815580AAC00734255 /* SACounterUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +264,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2373C9B21551B73D00F211AA /* ios_custom_input_componentTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,14 +292,6 @@
 				2373C99C1551B73D00F211AA /* en */,
 			);
 			name = SAViewController.xib;
-			sourceTree = "<group>";
-		};
-		2373C9AD1551B73D00F211AA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2373C9AE1551B73D00F211AA /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
