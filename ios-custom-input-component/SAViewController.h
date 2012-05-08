@@ -5,12 +5,9 @@
 //  Copyright (c) 2012 Acando. All rights reserved.
 //
 
-#import "SADoubleStreetNumberInputView.h"
+#import "SAStreetNumberInputView.h"
 #import <UIKit/UIKit.h>
 
 @interface SAViewController : UIViewController
-  @property (nonatomic) IBOutlet UITapGestureRecognizer *tapRecognizer;
-@property (nonatomic) IBOutlet SADoubleStreetNumberInputView *input;
-
-- (IBAction) showCurrentValue:(id)sender;
+  @property (nonatomic) IBOutlet SAStreetNumberInputView *streetNumberInputView;
 @end

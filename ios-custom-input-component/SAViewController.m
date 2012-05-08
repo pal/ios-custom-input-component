@@ -8,21 +8,20 @@
 #import "SAViewController.h"
 
 @interface SAViewController ()
-
+@property (nonatomic) UITapGestureRecognizer *tapRecognizer;
 @end
 
 @implementation SAViewController
 
 @synthesize tapRecognizer;
-@synthesize input;
+@synthesize streetNumberInputView;
 
 - (void) showCurrentValue:(id)sender {
-  NSLog(@"Address: %@", [[self input] getAddress]);
+  NSLog(@"Address: %@", [streetNumberInputView getAddress]);
 }
 
 - (void) viewDidLoad {
   [super viewDidLoad];
-
 
   // Handle background clicks
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -35,6 +34,7 @@
 
   tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 }
+
 
 - (void) keyboardWillShow:(NSNotification *)note {
   [self.view addGestureRecognizer:tapRecognizer];

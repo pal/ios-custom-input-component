@@ -1,6 +1,5 @@
 //
 //  SADoubleStreetNumberInputView.m
-//  ios-custom-input-component
 //
 //  Copyright (c) 2012 Acando. All rights reserved.
 //
@@ -36,13 +35,16 @@
 @interface SADoubleStreetNumberInputView ()
 - (UITextField *) createTextFieldWithFrame:(CGRect)frame;
 - (UIButton *) createArrowButtonWithFrame:(CGRect)frame image:(NSString *)imgPath;
+@property (retain) UIButton *upButton1;
+@property (retain) UIButton *upButton2;
+@property (retain) UIButton *downButton1;
+@property (retain) UIButton *downButton2;
 @end
-
 
 @implementation SADoubleStreetNumberInputView
 
 @synthesize numberTextField, letterTextField;
-
+@synthesize upButton1, upButton2, downButton1, downButton2;
 
 - (void) baseInit {
   numberTextField = nil;
@@ -84,7 +86,6 @@
   return textField;
 }
 
-
 - (UIButton *) createArrowButtonWithFrame:(CGRect)frame image:(NSString *)imgPath {
   UIImage *image = [UIImage imageNamed:imgPath];
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,26 +100,24 @@
 
   [super layoutSubviews];
 
-
-  UIButton *upButton1 = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
+  upButton1 = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
   [upButton1 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:upButton1];
 
-  UIButton *upButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
+  upButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
   [upButton2 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   upButton2.tag = STRING_FIELD_TAG;
   [self addSubview:upButton2];
 
-  UIButton *downButton = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
-  [downButton addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
-  [self addSubview:downButton];
+  downButton1 = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
+  [downButton1 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  [self addSubview:downButton1];
 
-  UIButton *downButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
+  downButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
   [downButton2 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
   downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
 
-  // view is 320x460
   numberTextField = [self createTextFieldWithFrame:CGRectMake(0, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   [self addSubview:numberTextField];
 
@@ -149,16 +148,6 @@
 - (NSString *) getAddress {
   return [NSString stringWithFormat:@"%@%@", numberTextField.text, letterTextField.text];
 }
-
-
-/*
-   // Only override drawRect: if you perform custom drawing.
-   // An empty implementation adversely affects performance during animation.
-   - (void)drawRect:(CGRect)rect
-   {
-    // Drawing code
-   }
- */
 
 // UITextFieldDelegate methods
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {

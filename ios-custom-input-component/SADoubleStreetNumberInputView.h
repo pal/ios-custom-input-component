@@ -1,6 +1,6 @@
 //
 //  SADoubleStreetNumberInputView.h
-//  ios-custom-input-component
+//  Input street name and number using arrows under and over the text fields.
 //
 //  Copyright (c) 2012 Acando. All rights reserved.
 //
