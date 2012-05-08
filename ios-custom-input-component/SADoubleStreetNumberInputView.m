@@ -141,7 +141,21 @@
 
 // Always use upper case chars
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-  textField.text = [textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]];
+  if (textField == letterTextField) {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    BOOL ok = (newLength > 1) ? NO : YES;
+    if (ok) {
+      textField.text = [textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]];
+    }
+    return NO;
+  } else {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    BOOL ok = (newLength > 3) ? NO : YES;
+    return [string isEqualToString:@""] ||
+           (ok && ([string stringByTrimmingCharactersInSet:
+                    [[NSCharacterSet decimalDigitCharacterSet] invertedSet]].length > 0));
+  }
+
   return NO;
 }
 

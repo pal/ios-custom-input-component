@@ -28,9 +28,6 @@
 #define TOP_BTN_Y         0
 #define BOTTOM_BTN_Y      (TEXT_FIELD_HEIGHT + BUTTON_HEIGHT + BUTTON_SPACE * 2)
 
-
-
-
 @interface SADoubleStreetNumberInputView : UIView <SAStreetNumberInput, UITextFieldDelegate>
 
   @property (nonatomic, retain) UITextField *numberTextField;
