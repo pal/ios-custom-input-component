@@ -95,6 +95,7 @@
   [self addSubview:downButton2];
 
   numberTextField = [self createTextFieldWithFrame:CGRectMake(0, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
+  numberTextField.keyboardType = UIKeyboardTypeNumberPad;
   [self addSubview:numberTextField];
 
   letterTextField = [self createTextFieldWithFrame:CGRectMake(SCREEN_WIDTH / 2, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
@@ -102,6 +103,7 @@
 } // layoutSubviews
 
 - (void) increaseValueInTextField:(id)sender {
+  [self endEditing:TRUE];
   UITextField *textField = ((UIButton *)sender).tag == NUMBER_FIELD_TAG ? numberTextField : letterTextField;
 
   if (textField == numberTextField) {
@@ -112,6 +114,7 @@
 }
 
 - (void) decreaseValueInTextField:(id)sender {
+  [self endEditing:TRUE];
   UITextField *textField = ((UIButton *)sender).tag == NUMBER_FIELD_TAG ? numberTextField : letterTextField;
 
   if (textField == numberTextField) {
