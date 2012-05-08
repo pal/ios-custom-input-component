@@ -26,13 +26,18 @@
   // Handle background clicks
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 
-  [nc addObserver:self selector:@selector(keyboardWillShow:) name:
-   UIKeyboardWillShowNotification object:nil];
+  [nc addObserver:self
+         selector:@selector(keyboardWillShow:)
+             name:UIKeyboardWillShowNotification
+           object:nil];
 
-  [nc addObserver:self selector:@selector(keyboardWillHide:) name:
-   UIKeyboardWillHideNotification object:nil];
+  [nc addObserver:self
+         selector:@selector(keyboardWillHide:)
+             name:UIKeyboardWillHideNotification
+           object:nil];
 
-  tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
+  tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                          action:@selector(didTapAnywhere:)];
 }
 
 

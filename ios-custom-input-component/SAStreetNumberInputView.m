@@ -47,18 +47,32 @@
 }
 
 - (void) changeView:(id)sender {
-  [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:0.5];
-  if ([input1 superview]) {
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self cache:YES];
-    [input1 removeFromSuperview];
-    [self addSubview:input2];
-  } else if ([input2 superview]) {
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self cache:YES];
-    [input2 removeFromSuperview];
-    [self addSubview:input1];
-  }
-  [UIView commitAnimations];
-}
+
+  float width = self.frame.size.width;
+  float height = self.frame.size.height;
+
+  // my nextView hasn't been added to the main view yet, so set the frame to be off-screen
+  UIView<SAStreetNumberInput> *nextView = (currentView == input1) ? input2 : input1;
+
+  [nextView setFrame:CGRectMake(width, 0.0, width, height)];
+
+  // then add it to the main view
+
+  [self addSubview:nextView];
+
+  // now animate moving the current view off to the left while the next view is moved into place
+
+  [UIView animateWithDuration:0.4f
+                        delay:0.0f
+                      options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction
+                   animations: ^{
+     [nextView setFrame:currentView.frame];
+     [currentView setFrame:CGRectMake (-width, 0.0, width, height)];
+   }
+                   completion: ^(BOOL finished) {
+     // do whatever post processing you want (such as resetting what is "current" and what is "next")
+     currentView = nextView;
+   }];
+} // changeView
 
 @end
