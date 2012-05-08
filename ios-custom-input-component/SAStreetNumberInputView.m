@@ -7,6 +7,7 @@
 
 #import "SAStreetNumberInputView.h"
 #import "SADoubleStreetNumberInputView.h"
+#import "SADoubleStreetNumberInputViewHorizontal.h"
 
 @interface SAStreetNumberInputView ()
 @property (nonatomic) IBOutlet UIView <SAStreetNumberInput> *input1;
@@ -20,7 +21,7 @@
 
 - (void) rootInitWithFrame:(CGRect)frame {
   input1 = [[SADoubleStreetNumberInputView alloc] initWithFrame:frame];
-  input2 = [[SADoubleStreetNumberInputView alloc] initWithFrame:frame];
+  input2 = [[SADoubleStreetNumberInputViewHorizontal alloc] initWithFrame:frame];
   [self addSubview:input1];
   currentView = input1;
   [input2 removeFromSuperview];

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2341768115589725008FD85A /* SAStreetNumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2341768015589725008FD85A /* SAStreetNumberInputView.m */; };
+		234176841558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m in Sources */ = {isa = PBXBuildFile; fileRef = 234176831558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m */; };
 		234D1CD115521B330026E0A5 /* btn-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 234D1CCF15521B330026E0A5 /* btn-down.png */; };
 		234D1CD215521B330026E0A5 /* btn-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 234D1CD015521B330026E0A5 /* btn-up.png */; };
 		2367CF5815580AAC00734255 /* SACounterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2367CF5715580AAC00734255 /* SACounterUtil.m */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		2341767F15589725008FD85A /* SAStreetNumberInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAStreetNumberInputView.h; sourceTree = "<group>"; };
 		2341768015589725008FD85A /* SAStreetNumberInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAStreetNumberInputView.m; sourceTree = "<group>"; };
+		234176821558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SADoubleStreetNumberInputViewHorizontal.h; sourceTree = "<group>"; };
+		234176831558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SADoubleStreetNumberInputViewHorizontal.m; sourceTree = "<group>"; };
 		234D1CCF15521B330026E0A5 /* btn-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-down.png"; sourceTree = "<group>"; };
 		234D1CD015521B330026E0A5 /* btn-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-up.png"; sourceTree = "<group>"; };
 		2367CF5615580AAC00734255 /* SACounterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SACounterUtil.h; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				2341768015589725008FD85A /* SAStreetNumberInputView.m */,
 				2373C9CB1551C39100F211AA /* SADoubleStreetNumberInputView.h */,
 				2373C9CC1551C39100F211AA /* SADoubleStreetNumberInputView.m */,
+				234176821558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.h */,
+				234176831558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m */,
 				2367CF5615580AAC00734255 /* SACounterUtil.h */,
 				2367CF5715580AAC00734255 /* SACounterUtil.m */,
 			);
@@ -263,6 +268,7 @@
 				2373C9CD1551C39100F211AA /* SADoubleStreetNumberInputView.m in Sources */,
 				2367CF5815580AAC00734255 /* SACounterUtil.m in Sources */,
 				2341768115589725008FD85A /* SAStreetNumberInputView.m in Sources */,
+				234176841558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
