@@ -12,7 +12,7 @@
 #define STRING_FIELD_TAG  1
 #define NUMBER_FIELD_TAG  2
 #define FONT_SIZE         60
-#define BG_COLOR          [UIColor blackColor]
+#define BG_COLOR          [UIColor clearColor]
 
 // Define positions for drawing on screen
 #define SCREEN_WIDTH      [[UIScreen mainScreen] bounds].size.width

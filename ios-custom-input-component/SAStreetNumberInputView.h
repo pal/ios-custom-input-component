@@ -9,5 +9,4 @@
 #import "SAStreetNumberInput.h"
 
 @interface SAStreetNumberInputView : UIView <SAStreetNumberInput>
-- (IBAction) changeView:(id)sender;
 @end

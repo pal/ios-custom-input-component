@@ -18,6 +18,13 @@
 
 - (void) showCurrentValue:(id)sender {
   NSLog(@"Address: %@", [streetNumberInputView getAddress]);
+  UIAlertView *alert = [[UIAlertView alloc]
+                            initWithTitle:@"Vald adress"
+                                  message:[streetNumberInputView getAddress]
+                                 delegate:nil
+                        cancelButtonTitle:@"OK"
+                        otherButtonTitles:nil];
+  [alert show];
 }
 
 - (void) viewDidLoad {
