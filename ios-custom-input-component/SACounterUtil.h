@@ -10,11 +10,9 @@
 
 @interface SACounterUtil : NSObject
 
-#define DEFAULT_NUMERIC_VALUE @"1"
 #define MIN_NUMERIC_VALUE     1
 #define MAX_NUMERIC_VALUE     999
 
-#define DEFAULT_STRING_VALUE  @"A"
 #define MIN_CHAR_VALUE        'A'
 #define MAX_CHAR_VALUE        'Z'
 
