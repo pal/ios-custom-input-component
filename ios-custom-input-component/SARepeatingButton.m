@@ -23,7 +23,7 @@
   SARepeatingButton *btn = [self buttonWithType:UIButtonTypeCustom];
 
   [btn setFrame:CGRectMake(point.x, point.y, BUTTON_WIDTH, BUTTON_HEIGHT)];
-  NSString *imgPath = (SARepeatingButtonDirectionUp == direction) ? @"btn-up.png" : @"btn-down.png";
+  NSString *imgPath = (SARepeatingButtonDirectionUp == direction) ? @"icon_arrowBigUp.png" : @"icon_arrowBigDown.png";
   [btn setBackgroundImage:[UIImage imageNamed:imgPath] forState:UIControlStateNormal];
   return btn;
 }

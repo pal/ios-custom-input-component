@@ -25,7 +25,7 @@
 #define VIEW_HEIGHT       184
 
 #define BUTTON_SPACE      5
-#define TOP_BTN_Y         26
+#define TOP_BTN_Y         ((VIEW_HEIGHT - (TEXT_FIELD_HEIGHT + (BUTTON_HEIGHT + BUTTON_SPACE) * 2)) / 2)
 #define BOTTOM_BTN_Y      (TEXT_FIELD_HEIGHT + TOP_BTN_Y + BUTTON_HEIGHT + BUTTON_SPACE * 2)
 
 @interface SADoubleStreetNumberInputView : UIView <SAStreetNumberInput, UITextFieldDelegate>
