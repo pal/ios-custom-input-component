@@ -30,7 +30,7 @@
 }
 
 - (id) initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, BOTTOM_BTN_Y + BUTTON_HEIGHT)];
+  self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, VIEW_HEIGHT)];
   if (self) {
     [self baseInit];
   }
@@ -40,7 +40,7 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
   if ((self = [super initWithCoder:aDecoder])) {
     [self baseInit];
-    self.frame = (CGRectMake(super.frame.origin.x, super.frame.origin.y, SCREEN_WIDTH, BOTTOM_BTN_Y + BUTTON_HEIGHT));
+    self.frame = (CGRectMake(super.frame.origin.x, super.frame.origin.y, SCREEN_WIDTH, VIEW_HEIGHT));
   }
   return self;
 }
@@ -96,11 +96,11 @@
   downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
 
-  numberTextField = [self createTextFieldWithFrame:CGRectMake(0, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
+  numberTextField = [self createTextFieldWithFrame:CGRectMake(0, BUTTON_HEIGHT + BUTTON_SPACE + TOP_BTN_Y, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   numberTextField.keyboardType = UIKeyboardTypeNumberPad;
   [self addSubview:numberTextField];
 
-  letterTextField = [self createTextFieldWithFrame:CGRectMake(SCREEN_WIDTH / 2, BUTTON_HEIGHT + BUTTON_SPACE, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
+  letterTextField = [self createTextFieldWithFrame:CGRectMake(SCREEN_WIDTH / 2, BUTTON_HEIGHT + BUTTON_SPACE + TOP_BTN_Y, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   [self addSubview:letterTextField];
 } // layoutSubviews
 

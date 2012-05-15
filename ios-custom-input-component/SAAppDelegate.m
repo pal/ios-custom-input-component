@@ -20,6 +20,7 @@
   self.viewController = [[SAViewController alloc] initWithNibName:@"SAViewController" bundle:nil];
   self.window.rootViewController = self.viewController;
   [self.window makeKeyAndVisible];
+  NSLog(@"starting");
   return YES;
 }
 
