@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SAStreetNumberInput.h"
+#import "SARepeatingButton.h"
 
 // Defined in public header for subclass usage
 #define STRING_FIELD_TAG  1
@@ -17,8 +18,6 @@
 // Define positions for drawing on screen
 #define SCREEN_WIDTH      [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT     [[UIScreen mainScreen] bounds].size.height
-#define BUTTON_WIDTH      37
-#define BUTTON_HEIGHT     30
 
 #define LEFT_BUTTON_X     ((SCREEN_WIDTH / 4) - (BUTTON_WIDTH / 2))
 #define RIGHT_BUTTON_X    (LEFT_BUTTON_X + (SCREEN_WIDTH / 2))
@@ -34,13 +33,15 @@
 @property (nonatomic, retain) UITextField *letterTextField;
 
 // keeping these buttons visible for subclasses
-@property (retain) UIButton *upButton1;
-@property (retain) UIButton *upButton2;
-@property (retain) UIButton *downButton1;
-@property (retain) UIButton *downButton2;
+@property (retain) SARepeatingButton *upButton1;
+@property (retain) SARepeatingButton *upButton2;
+@property (retain) SARepeatingButton *downButton1;
+@property (retain) SARepeatingButton *downButton2;
 
-- (IBAction) increaseValueInTextField:(id)sender;
-- (IBAction) decreaseValueInTextField:(id)sender;
+- (IBAction) increaseValueNumber:(id)sender;
+- (IBAction) decreaseValueNumber:(id)sender;
+- (IBAction) increaseValueLetter:(id)sender;
+- (IBAction) decreaseValueLetter:(id)sender;
 
 @end
 

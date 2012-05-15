@@ -10,11 +10,11 @@
 
 @interface SACounterUtil : NSObject
 
-#define MIN_NUMERIC_VALUE     1
-#define MAX_NUMERIC_VALUE     999
+#define MIN_NUMERIC_VALUE 1
+#define MAX_NUMERIC_VALUE 999
 
-#define MIN_CHAR_VALUE        'A'
-#define MAX_CHAR_VALUE        'Z'
+#define MIN_CHAR_VALUE    'A'
+#define MAX_CHAR_VALUE    'Z'
 
 + (NSString *) nextNumber:(NSString *)in_val;
 + (NSString *) prevNumber:(NSString *)in_val;

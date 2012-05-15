@@ -5,6 +5,7 @@
 //
 
 #import "SADoubleStreetNumberInputView.h"
+#import "SARepeatingButton.h"
 #import "SACounterUtil.h"
 #import <Foundation/Foundation.h>
 #import <CoreFoundation/CoreFoundation.h>
@@ -69,6 +70,7 @@
   button.tag = NUMBER_FIELD_TAG;
   button.frame = frame;
   [button setBackgroundImage:image forState:UIControlStateNormal];
+
   return button;
 }
 
@@ -76,21 +78,21 @@
 
   [super layoutSubviews];
 
-  upButton1 = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
-  [upButton1 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  upButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake(LEFT_BUTTON_X, TOP_BTN_Y)];
+  [upButton1 addTarget:self action:@selector(increaseValueNumber:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:upButton1];
 
-  upButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, TOP_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-up.png"];
-  [upButton2 addTarget:self action:@selector(increaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  upButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake(RIGHT_BUTTON_X, TOP_BTN_Y)];
+  [upButton2 addTarget:self action:@selector(increaseValueLetter:) forControlEvents:UIControlEventTouchUpInside];
   upButton2.tag = STRING_FIELD_TAG;
   [self addSubview:upButton2];
 
-  downButton1 = [self createArrowButtonWithFrame:CGRectMake(LEFT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
-  [downButton1 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  downButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake(LEFT_BUTTON_X, BOTTOM_BTN_Y)];
+  [downButton1 addTarget:self action:@selector(decreaseValueNumber:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:downButton1];
 
-  downButton2 = [self createArrowButtonWithFrame:CGRectMake(RIGHT_BUTTON_X, BOTTOM_BTN_Y, BUTTON_WIDTH, BUTTON_HEIGHT) image:@"btn-down.png"];
-  [downButton2 addTarget:self action:@selector(decreaseValueInTextField:) forControlEvents:UIControlEventTouchUpInside];
+  downButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake(RIGHT_BUTTON_X, BOTTOM_BTN_Y)];
+  [downButton2 addTarget:self action:@selector(decreaseValueLetter:) forControlEvents:UIControlEventTouchUpInside];
   downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
 
@@ -102,26 +104,21 @@
   [self addSubview:letterTextField];
 } // layoutSubviews
 
-- (void) increaseValueInTextField:(id)sender {
+- (void) increaseValueNumber:(id)sender {
   [self endEditing:TRUE];
-  UITextField *textField = ((UIButton *)sender).tag == NUMBER_FIELD_TAG ? numberTextField : letterTextField;
-
-  if (textField == numberTextField) {
-    textField.text = [SACounterUtil nextNumber:numberTextField.text];
-  } else {
-    textField.text = [SACounterUtil nextString:letterTextField.text];
-  }
+  numberTextField.text = [SACounterUtil nextNumber:numberTextField.text];
 }
-
-- (void) decreaseValueInTextField:(id)sender {
+- (void) decreaseValueNumber:(id)sender {
   [self endEditing:TRUE];
-  UITextField *textField = ((UIButton *)sender).tag == NUMBER_FIELD_TAG ? numberTextField : letterTextField;
-
-  if (textField == numberTextField) {
-    textField.text = [SACounterUtil prevNumber:numberTextField.text];
-  } else {
-    textField.text = [SACounterUtil prevString:letterTextField.text];
-  }
+  numberTextField.text = [SACounterUtil prevNumber:numberTextField.text];
+}
+- (void) increaseValueLetter:(id)sender {
+  [self endEditing:TRUE];
+  letterTextField.text = [SACounterUtil nextString:letterTextField.text];
+}
+- (void) decreaseValueLetter:(id)sender {
+  [self endEditing:TRUE];
+  letterTextField.text = [SACounterUtil prevString:letterTextField.text];
 }
 
 - (NSString *) getAddress {
