@@ -60,6 +60,7 @@
   textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   textField.delegate = self;
   textField.text = @"";
+  textField.adjustsFontSizeToFitWidth = YES;
   return textField;
 }
 
@@ -78,20 +79,20 @@
 
   [super layoutSubviews];
 
-  upButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake(LEFT_BUTTON_X, TOP_BTN_Y)];
+  upButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 1) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
   [upButton1 addTarget:self action:@selector(increaseValueNumber:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:upButton1];
 
-  upButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake(RIGHT_BUTTON_X, TOP_BTN_Y)];
+  upButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 3) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
   [upButton2 addTarget:self action:@selector(increaseValueLetter:) forControlEvents:UIControlEventTouchUpInside];
   upButton2.tag = STRING_FIELD_TAG;
   [self addSubview:upButton2];
 
-  downButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake(LEFT_BUTTON_X, BOTTOM_BTN_Y)];
+  downButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 5) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
   [downButton1 addTarget:self action:@selector(decreaseValueNumber:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:downButton1];
 
-  downButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake(RIGHT_BUTTON_X, BOTTOM_BTN_Y)];
+  downButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 7) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
   [downButton2 addTarget:self action:@selector(decreaseValueLetter:) forControlEvents:UIControlEventTouchUpInside];
   downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
@@ -143,20 +144,28 @@
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
   if (textField == letterTextField) {
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    BOOL ok = (newLength > 1) ? NO : YES;
+    BOOL ok = (newLength > [self maxLengthForInputField:textField]) ? NO : YES;
     if (ok) {
       textField.text = [textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]];
     }
     return NO;
   } else {
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    BOOL ok = (newLength > 3) ? NO : YES;
+    BOOL ok = (newLength > [self maxLengthForInputField:textField]) ? NO : YES;
     return [string isEqualToString:@""] ||
            (ok && ([string stringByTrimmingCharactersInSet:
                     [[NSCharacterSet decimalDigitCharacterSet] invertedSet]].length > 0));
   }
 
   return NO;
+}
+
+- (int) maxLengthForInputField:(UITextField *)textField {
+  if (textField == letterTextField) {
+    return 1;
+  } else {
+    return 3;
+  }
 }
 
 @end

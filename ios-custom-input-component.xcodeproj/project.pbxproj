@@ -33,6 +33,7 @@
 		23C3CBEE1562A34E00F6CB21 /* icon_arrowBigUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C3CBEA1562A34E00F6CB21 /* icon_arrowBigUp.png */; };
 		23C3CBEF1562A34E00F6CB21 /* icon_arrowBigDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C3CBEB1562A34E00F6CB21 /* icon_arrowBigDown@2x.png */; };
 		23C3CBF01562A34E00F6CB21 /* icon_arrowBigUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C3CBEC1562A34E00F6CB21 /* icon_arrowBigUp@2x.png */; };
+		23C3CBF41562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C3CBF31562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,8 @@
 		23C3CBEA1562A34E00F6CB21 /* icon_arrowBigUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrowBigUp.png; sourceTree = "<group>"; };
 		23C3CBEB1562A34E00F6CB21 /* icon_arrowBigDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrowBigDown@2x.png"; sourceTree = "<group>"; };
 		23C3CBEC1562A34E00F6CB21 /* icon_arrowBigUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrowBigUp@2x.png"; sourceTree = "<group>"; };
+		23C3CBF21562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASingleInputStreetNumberInputView.h; sourceTree = "<group>"; };
+		23C3CBF31562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASingleInputStreetNumberInputView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				231AC2CB155CFCE800A41E33 /* SARepeatingButton.m */,
 				234176821558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.h */,
 				234176831558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m */,
+				23C3CBF21562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.h */,
+				23C3CBF31562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.m */,
 				2367CF5615580AAC00734255 /* SACounterUtil.h */,
 				2367CF5715580AAC00734255 /* SACounterUtil.m */,
 			);
@@ -259,6 +264,7 @@
 				2341768115589725008FD85A /* SAStreetNumberInputView.m in Sources */,
 				234176841558A1CA008FD85A /* SADoubleStreetNumberInputViewHorizontal.m in Sources */,
 				231AC2CC155CFCE800A41E33 /* SARepeatingButton.m in Sources */,
+				23C3CBF41562A6BF00F6CB21 /* SASingleInputStreetNumberInputView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

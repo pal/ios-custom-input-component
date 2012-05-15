@@ -43,6 +43,7 @@
 - (IBAction) decreaseValueNumber:(id)sender;
 - (IBAction) increaseValueLetter:(id)sender;
 - (IBAction) decreaseValueLetter:(id)sender;
+- (int) maxLengthForInputField:(UITextField *)textField;
 
 @end
 
