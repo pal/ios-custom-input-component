@@ -69,4 +69,11 @@
   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (void) setAddressOnInput:(id)sender {
+  NSString *val = ((UIButton *)sender).titleLabel.text;
+
+  NSLog(@"Setting street value: %@ for input: %@", val, self.streetNumberInputView);
+  [self.streetNumberInputView setAddress:val];
+}
+
 @end

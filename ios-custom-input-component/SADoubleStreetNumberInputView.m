@@ -180,4 +180,22 @@
   }
 }
 
+- (void) setAddress:(NSString *)newAddress {
+  NSError *error = NULL;
+  // The regex matches what this component can handle
+  NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\s*(\\d+)\\s*([A-Za-z]*)\\s*"
+                                                                         options:NSRegularExpressionCaseInsensitive
+                                                                           error:&error];
+  NSTextCheckingResult *match = [regex firstMatchInString:newAddress
+                                                  options:0
+                                                    range:NSMakeRange(0, [newAddress length])];
+
+  if (match) {
+    self.numberTextField.text = [newAddress substringWithRange:[match rangeAtIndex:1]];
+    self.letterTextField.text = [newAddress substringWithRange:[match rangeAtIndex:2]];
+  } else {
+    NSLog(@"No matches for: %@", newAddress);
+  }
+}
+
 @end

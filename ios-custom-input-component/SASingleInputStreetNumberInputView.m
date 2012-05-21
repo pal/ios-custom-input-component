@@ -40,4 +40,9 @@
   }
 }
 
+- (void) setAddress:(NSString *)newAddress {
+  self.letterTextField.text = newAddress;
+}
+
+
 @end

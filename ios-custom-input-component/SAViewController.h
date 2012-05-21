@@ -10,4 +10,5 @@
 
 @interface SAViewController : UIViewController
   @property (nonatomic) IBOutlet SAStreetNumberInputView *streetNumberInputView;
+- (IBAction) setAddressOnInput:(id)sender;
 @end

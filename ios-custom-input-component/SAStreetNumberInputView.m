@@ -105,5 +105,8 @@
   }
 }
 
+- (void) setAddress:(NSString *)newAddress {
+  [currentView setAddress:newAddress];
+}
 
 @end
