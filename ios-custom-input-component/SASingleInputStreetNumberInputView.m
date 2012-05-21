@@ -32,4 +32,12 @@
   return 30;
 }
 
+- (void) isActiveInputMethod:(BOOL)active {
+  if (!active) {
+    [self endEditing:TRUE];
+  } else {
+    [self.letterTextField becomeFirstResponder];
+  }
+}
+
 @end

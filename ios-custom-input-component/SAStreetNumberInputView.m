@@ -93,7 +93,17 @@
    }
                    completion: ^(BOOL finished) {
      // do whatever post processing you want (such as resetting what is "current" and what is "next")
+     [currentView isActiveInputMethod:NO];
      currentView = nextView;
+     [currentView isActiveInputMethod:YES];
    }];
 } // handleSwipe
+
+- (void) isActiveInputMethod:(BOOL)active {
+  if (!active) {
+    [self endEditing:TRUE];
+  }
+}
+
+
 @end

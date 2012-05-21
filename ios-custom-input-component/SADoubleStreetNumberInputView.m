@@ -174,4 +174,10 @@
   }
 }
 
+- (void) isActiveInputMethod:(BOOL)active {
+  if (!active) {
+    [self endEditing:TRUE];
+  }
+}
+
 @end

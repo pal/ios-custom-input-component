@@ -9,4 +9,5 @@
 
 @protocol SAStreetNumberInput
 - (NSString *) getAddress;
+- (IBAction) isActiveInputMethod:(BOOL)active;
 @end
