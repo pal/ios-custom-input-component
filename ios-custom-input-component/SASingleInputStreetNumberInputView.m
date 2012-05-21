@@ -24,6 +24,8 @@
   // Resize text input field to width
   CGRect origRect = self.letterTextField.frame;
   self.letterTextField.frame = CGRectMake(0, origRect.origin.y, SCREEN_WIDTH, origRect.size.height);
+  self.letterTextField.font = [UIFont boldSystemFontOfSize:32];
+  self.letterTextField.placeholder = @"Enter street number";
 }
 
 - (int) maxLengthForInputField:(UITextField *)textField {

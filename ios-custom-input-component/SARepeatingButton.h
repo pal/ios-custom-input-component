@@ -12,8 +12,8 @@ typedef enum {
   SARepeatingButtonDirectionDown,
 } SARepeatingButtonDirection;
 
-#define BUTTON_WIDTH  37
-#define BUTTON_HEIGHT 30
+#define BUTTON_WIDTH  50
+#define BUTTON_HEIGHT 44
 
 @interface SARepeatingButton : UIButton
 + (id) buttonWithDirection:(SARepeatingButtonDirection)direction atPoint:(CGPoint)point;

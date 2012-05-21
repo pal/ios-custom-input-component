@@ -13,7 +13,7 @@
 #define STRING_FIELD_TAG  1
 #define NUMBER_FIELD_TAG  2
 #define FONT_SIZE         60
-#define BG_COLOR          [UIColor colorWithPatternImage:[UIImage imageNamed:@"fade_area_bg.png"]];
+#define BG_COLOR          [UIColor clearColor]
 
 // Define positions for drawing on screen
 #define SCREEN_WIDTH      [[UIScreen mainScreen] bounds].size.width
@@ -25,8 +25,9 @@
 #define VIEW_HEIGHT       184
 
 #define BUTTON_SPACE      5
-#define TOP_BTN_Y         ((VIEW_HEIGHT - (TEXT_FIELD_HEIGHT + (BUTTON_HEIGHT + BUTTON_SPACE) * 2)) / 2)
-#define BOTTOM_BTN_Y      (TEXT_FIELD_HEIGHT + TOP_BTN_Y + BUTTON_HEIGHT + BUTTON_SPACE * 2)
+#define INPUT_HEIGHT      (TEXT_FIELD_HEIGHT + BUTTON_HEIGHT + BUTTON_SPACE * 2)
+#define BUTTON_Y          (VIEW_HEIGHT - INPUT_HEIGHT) + (VIEW_HEIGHT - INPUT_HEIGHT) / 2
+#define INPUTFIELD_Y      BUTTON_Y - (BUTTON_HEIGHT + BUTTON_SPACE * 2)
 
 @interface SADoubleStreetNumberInputView : UIView <SAStreetNumberInput, UITextFieldDelegate>
 

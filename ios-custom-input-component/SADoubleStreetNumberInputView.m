@@ -79,29 +79,35 @@
 
   [super layoutSubviews];
 
-  upButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 1) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
+  NSLog(@"button y %d, input y %d", BUTTON_Y, INPUTFIELD_Y);
+
+  upButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp
+                                             atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 3) - (BUTTON_WIDTH / 2)), BUTTON_Y)];
   [upButton1 addTarget:self action:@selector(increaseValueNumber:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:upButton1];
 
-  upButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 3) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
+  upButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionUp
+                                             atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 7) - (BUTTON_WIDTH / 2)), BUTTON_Y)];
   [upButton2 addTarget:self action:@selector(increaseValueLetter:) forControlEvents:UIControlEventTouchUpInside];
   upButton2.tag = STRING_FIELD_TAG;
   [self addSubview:upButton2];
 
-  downButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 5) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
+  downButton1 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown
+                                               atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 1) - (BUTTON_WIDTH / 2)), BUTTON_Y)];
   [downButton1 addTarget:self action:@selector(decreaseValueNumber:) forControlEvents:UIControlEventTouchUpInside];
   [self addSubview:downButton1];
 
-  downButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 7) - (BUTTON_WIDTH / 2)), BOTTOM_BTN_Y)];
+  downButton2 = [SARepeatingButton buttonWithDirection:SARepeatingButtonDirectionDown
+                                               atPoint:CGPointMake((((SCREEN_WIDTH / 8) * 5) - (BUTTON_WIDTH / 2)), BUTTON_Y)];
   [downButton2 addTarget:self action:@selector(decreaseValueLetter:) forControlEvents:UIControlEventTouchUpInside];
   downButton2.tag = STRING_FIELD_TAG;
   [self addSubview:downButton2];
 
-  numberTextField = [self createTextFieldWithFrame:CGRectMake(0, BUTTON_HEIGHT + BUTTON_SPACE + TOP_BTN_Y, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
+  numberTextField = [self createTextFieldWithFrame:CGRectMake(0, INPUTFIELD_Y, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   numberTextField.keyboardType = UIKeyboardTypeNumberPad;
   [self addSubview:numberTextField];
 
-  letterTextField = [self createTextFieldWithFrame:CGRectMake(SCREEN_WIDTH / 2, BUTTON_HEIGHT + BUTTON_SPACE + TOP_BTN_Y, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
+  letterTextField = [self createTextFieldWithFrame:CGRectMake(SCREEN_WIDTH / 2, INPUTFIELD_Y, (SCREEN_WIDTH / 2), TEXT_FIELD_HEIGHT)];
   [self addSubview:letterTextField];
 } // layoutSubviews
 
